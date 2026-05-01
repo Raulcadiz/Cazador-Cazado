@@ -1,0 +1,143 @@
+# CONFIGURACIÓN ANTI-ACOSO DIGITAL TOOLKIT
+version: "2.0.0"
+
+# Configuración ética
+ethics:
+  require_consent: true
+  legal_use_only: true
+  victim_protection: true
+  data_retention_days: 30
+  disclaimer_display: true
+  logging_enabled: true
+
+# Plataformas para búsqueda
+platforms:
+  - name: "Instagram"
+    url_pattern: "https://instagram.com/{username}"
+    search_enabled: true
+    timeout: 10
+  
+  - name: "Twitter"
+    url_pattern: "https://x.com/{username}"
+    search_enabled: true
+    timeout: 10
+  
+  - name: "Facebook"
+    url_pattern: "https://facebook.com/{username}"
+    search_enabled: true
+    timeout: 10
+  
+  - name: "LinkedIn"
+    url_pattern: "https://linkedin.com/in/{username}"
+    search_enabled: true
+    timeout: 10
+  
+  - name: "GitHub"
+    url_pattern: "https://github.com/{username}"
+    search_enabled: true
+    timeout: 10
+
+# Motores de búsqueda inversa
+reverse_search_engines:
+  google: "https://www.google.com/searchbyimage?image_url={image_url}"
+  yandex: "https://yandex.com/images/search?url={image_url}"
+  tineye: "https://www.tineye.com/search?url={image_url}"
+  bing: "https://www.bing.com/images/search?q=imgurl:{image_url}"
+
+# Configuración de captura
+screenshot:
+  delay_seconds: 2
+  full_page: true
+  include_timestamp: true
+  format: "html"
+  quality: "high"
+
+# Configuración de informes
+reports:
+  police_template: "templates/police_report.txt"
+  legal_template: "templates/legal_report.txt"
+  platform_template: "templates/platform_report.txt"
+  include_hashes: true
+  include_timeline: true
+  include_metadata: true
+  default_format: "docx"
+
+# Límites y seguridad
+limits:
+  max_searches_per_hour: 50
+  max_downloads_per_session: 100
+  require_approval_for_sensitive: true
+  auto_delete_after_days: 90
+  encryption_enabled: false
+
+# Configuración de red
+network:
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+  timeout: 30
+  retries: 3
+  verify_ssl: true
+  use_proxy: false
+  # Lista de proxies para rotar (opcional). Deja vacio [] para no usar proxies.
+  # Formatos soportados:
+  #   HTTP  -> "http://usuario:password@host:puerto"
+  #   SOCKS5-> "socks5://usuario:password@host:puerto"  (requiere: pip install requests[socks])
+  # RECOMENDACION: usa proxies residenciales de pago (BrightData, Oxylabs, SmartProxy).
+  # Los proxies gratuitos son inestables y suelen estar ya baneados por las plataformas.
+  # Alternativa gratuita: Tor Browser activo -> "socks5h://127.0.0.1:9050"
+  proxies: []
+  #proxies:
+  #  - "http://user:pass@proxy1.example.com:8080"
+  #  - "socks5://user:pass@proxy2.example.com:1080"
+
+# ============================================================
+# Vigilancia automatica (LINCE Watcher)
+# ============================================================
+monitoring:
+  enabled: false                 # true = watcher se activa al arrancar el caso
+  interval_hours: 6              # Cada cuantas horas re-verificar (min. 1)
+
+  # --- Alertas por Telegram ---
+  # 1. Crea un bot con @BotFather en Telegram -> obtienes el token
+  # 2. Escribe al bot desde tu cuenta -> obtén tu chat_id con @userinfobot
+  notify_telegram: false
+  telegram_bot_token: ""         # "123456789:ABCdefGhI..."
+  telegram_chat_id: ""           # "123456789"
+
+  # --- Alertas por Email (SMTP SSL) ---
+  # Gmail: activa "Contrasena de aplicacion" en tu cuenta Google
+  # Outlook/Hotmail: smtp-mail.outlook.com puerto 587
+  notify_email: false
+  email_smtp_host: "smtp.gmail.com"
+  email_smtp_port: 465
+  email_username: ""             # tu@gmail.com
+  email_password: ""             # contrasena de aplicacion (no la de tu cuenta)
+  email_to: ""                   # destinatario de las alertas
+
+  # --- Comparacion de avatares ---
+  avatar_similarity_threshold: 0.85   # 0.85 = 85% similitud para detectar multi-cuenta
+
+# Logging
+logging:
+  level: "INFO"
+  file: "activity.log"
+  max_size_mb: 10
+  backup_count: 5
+  console_output: true
+
+# Directorios
+directories:
+  data: "data/"
+  reports: "reports/"
+  templates: "templates/"
+  exports: "exports/"
+  backups: "backups/"
+
+# Características
+features:
+  screenshot_capture: true
+  image_analysis: true
+  metadata_extraction: true
+  pattern_analysis: true
+  report_generation: true
+  data_export: true
+  integrity_checking: true

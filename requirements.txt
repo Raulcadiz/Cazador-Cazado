@@ -1,0 +1,52 @@
+# ============================================================
+#  LINCE — Anti-Acoso Digital Toolkit
+#  Instalar: pip install -r requirements.txt
+#
+#  Después de instalar, ejecutar también:
+#    scrapling install        <- descarga el browser Camoufox (stealth)
+# ============================================================
+
+# ── Core: HTTP, parsing y CLI ────────────────────────────────────────────────
+colorama>=0.4.6
+requests>=2.31.0
+beautifulsoup4>=4.12.2
+lxml>=4.9.3
+urllib3>=2.0.3
+tqdm>=4.65.0
+
+# ── Scraping avanzado (bypass anti-bot) ─────────────────────────────────────
+# Scrapling: TLS fingerprint spoof + Camoufox stealth browser
+scrapling[fetchers]>=0.2.9
+
+# DDG search (fuente secundaria de menciones, no bloqueable)
+ddgs>=7.0
+
+# ── Twitter scraping directo (OPCIONAL, requiere cuenta Twitter) ─────────────
+# pip install twscrape   y después configurar desde el menú 13 → t
+# twscrape>=0.9
+
+# ── Análisis de datos y gráficos ─────────────────────────────────────────────
+pandas>=2.1.3
+matplotlib>=3.7.3
+seaborn>=0.12.2
+
+# ── Documentos y evidencias ──────────────────────────────────────────────────
+python-docx>=1.1.0
+PyPDF2>=3.0.1
+Pillow>=9.5.0
+exif>=1.6.0
+imagehash>=4.3.0
+
+# ── Configuración y utilidades ───────────────────────────────────────────────
+pyyaml>=6.0
+python-dateutil>=2.8.2
+validators>=0.20.0
+
+# ── Vigilancia y monitoreo automático ────────────────────────────────────────
+apscheduler>=3.10.0
+
+# ── Opcional: acceso SSH/SFTP al VPS (scripts de investigación remota) ───────
+# paramiko>=3.4.0
+
+# ── Opcional: Tor / proxies ───────────────────────────────────────────────────
+# requests[socks]
